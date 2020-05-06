@@ -1,0 +1,10 @@
+.outerDiv {
+  margin: 0px;
+  width: 100%;
+  position: fixed;
+}
+
+.navBar {
+  background-color: #182628;
+  height: 70px;
+}

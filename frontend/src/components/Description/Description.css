@@ -1,0 +1,17 @@
+.background {
+  padding-top: 10px;
+  padding-bottom: 60px;
+}
+
+.title {
+  position: relative;
+  margin-top: 20px;
+  margin-left: 150px;
+}
+
+.description {
+  position: relative;
+  margin-top: 20px;
+  margin-left: 150px;
+  margin-right: 150px;
+}
