@@ -10,6 +10,9 @@ VIVID is a data-visualization web-app which displays COVID-cases in real time. T
 3. Front end with React
 4. JHU Covid-19 API
 
+### Contributions
+Vivid is a platform where information is consolidated and is open to use by the public. This project is 100% open sources and information and publishable data are available on Github as well. 
+
 ### Project Progress
 * Still in progress
 * Targeted June 15th Completion
