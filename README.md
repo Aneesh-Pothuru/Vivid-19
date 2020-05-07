@@ -5,7 +5,8 @@ VIVID is a data-visualization web-app which displays COVID-cases in real time. T
 ![Wireframe](Untitled.png)
 
 ### Technologies Used
-1. Backend with Django
+1. Backend with Flask
+	* pipenv as for virtual environments
 2. Postgres as a database
 3. Front end with React
 4. JHU Covid-19 API
