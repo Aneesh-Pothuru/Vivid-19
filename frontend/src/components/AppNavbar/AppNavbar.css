@@ -8,3 +8,13 @@
   background-color: #cc3e3e;
   height: 70px;
 }
+
+.palette {
+  primary: red;
+}
+
+.font {
+  font-family: Helvetica;
+  font-weight: 300;
+  font-size: 30pt;
+}

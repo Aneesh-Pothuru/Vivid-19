@@ -1,48 +1,42 @@
-import React, { useState } from "react";
-import {
-  Collapse,
-  Navbar,
-  NavbarToggler,
-  NavbarBrand,
-  Nav,
-  NavItem,
-  NavLink,
-  Container,
-} from "reactstrap";
-import AppNavBarCSS from "./AppNavbar.css";
+import React from "react";
+import { makeStyles } from "@material-ui/core/styles";
+import AppBar from "@material-ui/core/AppBar";
+import Toolbar from "@material-ui/core/Toolbar";
+import Typography from "@material-ui/core/Typography";
+import Button from "@material-ui/core/Button";
 import miniLogo from "../../miniLogo.jpeg";
 
-const AppNavBar = (props) => {
-  // React Hook: Used to set state, isOpen is set to false
-  const [isOpen, setIsOpen] = useState(false);
+const useStyles = makeStyles((theme) => ({
+  root: {
+    flexGrow: 1,
+  },
+  menuButton: {
+    marginRight: theme.spacing(2),
+  },
+  title: {
+    flexGrow: 1,
+  },
+}));
 
-  // Toggle Function: Use toggle to set isOpen
-  const toggle = () => setIsOpen(!isOpen);
+export default function ButtonAppBar() {
+  const classes = useStyles();
 
   return (
-    <div className="outerDiv">
-      <Navbar className="navBar" color="dark" dark expand="sm" className="mb-3">
-        <Container fluid>
-          <NavbarBrand href="/">
-            <img className="miniLogo" src={miniLogo}></img>
-          </NavbarBrand>
-          <NavbarToggler onClick={() => toggle()} />
-          <Collapse isOpen={isOpen} navbar>
-            <Nav className="ml-auto" nabar>
-              <NavItem>
-                <NavLink
-                  secondary
-                  href="https://github.com/Aneesh-Pothuru/Vivid"
-                >
-                  GitHub
-                </NavLink>
-              </NavItem>
-            </Nav>
-          </Collapse>
-        </Container>
-      </Navbar>
+    <div className={classes.root}>
+      <AppBar position="static" style={{ backgroundColor: "#ED233C" }}>
+        <Toolbar>
+          <img className="miniLogo" src={miniLogo}></img>
+          <Typography align="left" variant="h6" className={classes.title}>
+            Vivid-19
+          </Typography>
+          <Button
+            color="inherit"
+            href="https://github.com/Aneesh-Pothuru/Vivid"
+          >
+            GitHub
+          </Button>
+        </Toolbar>
+      </AppBar>
     </div>
   );
-};
-
-export default AppNavBar;
+}

@@ -6,10 +6,10 @@ const Description = (props) => {
     <div className="background">
       <h4 className="title" align="justify">
         {" "}
-        What is Vivid?{" "}
+        What is Vivid-19?{" "}
       </h4>
       <p className="description" align="justify">
-        VIVID is a data-visualization web-app which displays COVID-cases in
+        Vivid-19 is a data-visualization web-app which displays COVID-cases in
         real-time, using all information from trusted data sources and even
         reports from users.
       </p>

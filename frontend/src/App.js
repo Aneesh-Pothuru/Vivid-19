@@ -8,7 +8,7 @@ import Data from "./components/TheData/Data";
 
 const App = () => {
   return (
-    <div className="App">
+    <div className="App" style={{ backgroundColor: "f2f2ec" }}>
       <AppNavBar />
       <Map />
       <Data />
