@@ -1,3 +1,5 @@
+Install Heroku CLI 
+
 $ heroku login
 
 $ cd my-project/
