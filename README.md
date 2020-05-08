@@ -9,7 +9,7 @@ VIVID is a data-visualization web-app which displays COVID-cases in real time. T
 	* pipenv as for virtual environments
 2. Postgres as a database
 3. Front end with React
-4. JHU Covid-19 API
+4. JHU Covid-19 Data
 5. Heroku for deployment
 
 ### Contributions
