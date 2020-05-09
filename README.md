@@ -17,4 +17,4 @@ Vivid is a platform where information is consolidated and is open to use by the 
 
 ### Project Progress
 * Still in progress
-* Targeted June 15th Completion
+
