@@ -1,0 +1,21 @@
+$(document).ready(function () {
+    var newArray = [];
+    d3.csv("05-08-2020.csv", function(error, data) {// with header..
+        data.forEach(function(d) {
+
+
+                newArray.push(d);
+        });
+
+        });
+
+        d3.csv("05-09-2020.csv", function(error, data2) {// without header..
+            data2.forEach(function(d2) {
+
+
+                    newArray.push(d2);
+            });
+
+            });
+        console.log(newArray);
+    });
