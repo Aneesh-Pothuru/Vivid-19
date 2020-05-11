@@ -1,0 +1,41 @@
+import sqlite3
+sqlite3.connect(covid.db)
+
+import sqlite3
+conn = sqlite3.connect('covid.db')
+c = conn.cursor() 
+
+c.execute('''CREATE TABLE STATE
+             ([generated_id] INTEGER PRIMARY KEY,[Province_State] text, [Country_Region] integer, [Last_Update] integer, [Lat] integer, [Long_] integer, [Confirmed] integer, [Deaths] integer, [Recovered] integer, [Active] integer, [People_Tested] integer, [People_Hospitalized] integer)
+c.execute('''CREATE TABLE COUNTRY
+             ([generated_id] INTEGER PRIMARY KEY,[Country_Region] integer, [Last_Update] integer, [Lat] integer, [Long_] integer, [Confirmed] integer, [Deaths] integer, [Recovered] integer, [Active] integer, [People_Tested] integer, [People_Hospitalized] integer)            
+c.execute('''CREATE TABLE UPDATED
+             ([generated_id] INTEGER PRIMARY KEY,[Last_Update] integer, [Lat] integer, [Long_] integer, [Confirmed] integer, [Deaths] integer, [Recovered] integer, [Active] integer, [People_Tested] integer, [People_Hospitalized] integer)            
+c.execute('''CREATE TABLE LATITUDE
+             ([generated_id] INTEGER PRIMARY KEY,[Lat] integer, [Long_] integer, [Confirmed] integer, [Deaths] integer, [Recovered] integer, [Active] integer, [People_Tested] integer, [People_Hospitalized] integer)
+c.execute('''CREATE TABLE LONGITUDE
+             ([generated_id] INTEGER PRIMARY KEY,[Long_] integer, [Confirmed] integer, [Deaths] integer, [Recovered] integer, [Active] integer, [People_Tested] integer, [People_Hospitalized] integer)        
+c.execute('''CREATE TABLE CONFIRMED
+             ([generated_id] INTEGER PRIMARY KEY,[Confirmed] integer, [Deaths] integer, [Recovered] integer, [Active] integer, [People_Tested] integer, [People_Hospitalized] integer)             
+c.execute('''CREATE TABLE DEATHS
+             ([generated_id] INTEGER PRIMARY KEY,[Deaths] integer, [Recovered] integer, [Active] integer, [People_Tested] integer, [People_Hospitalized] integer)            
+c.execute('''CREATE TABLE RECOVERED
+             ([generated_id] INTEGER PRIMARY KEY,[Recovered] integer, [Active] integer, [People_Tested] integer, [People_Hospitalized] integer)             
+c.execute('''CREATE TABLE ACTIVE
+             ([generated_id] INTEGER PRIMARY KEY,[Active] integer, [People_Tested] integer, [People_Hospitalized] integer)             
+c.execute('''CREATE TABLE TESTED
+             ([generated_id] INTEGER PRIMARY KEY,[People_Tested] integer, [People_Hospitalized] integer)             
+c.execute('''CREATE TABLE HOSPITALIZED
+             ([generated_id] INTEGER PRIMARY KEY,[People_Hospitalized] integer)
+conn.commit()
+
+read_state = pd.read_csv (r'C:/Users/abirrahman/Library/Mobile%20Documents/com~apple~Numbers/Documents/Province_State/05-09-2020.csv')
+read_Province_State.to_sql('Province_State', conn, if_exists='append', index = False) 
+             
+             
+             
+             
+             
+             
+             
+             
