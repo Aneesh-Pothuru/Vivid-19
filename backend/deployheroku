@@ -1,0 +1,12 @@
+brew tap heroku/brew && brew install heroku
+
+$ git clone https://github.com/heroku/java-getting-started.git
+$ cd java-getting-started
+$ mvn install
+$ heroku local:start
+
+JDBC_DATABASE_URL=jdbc:postgresql://localhost:5432/java_database_name
+
+$ heroku create
+$ git push heroku master
+$ heroku open
