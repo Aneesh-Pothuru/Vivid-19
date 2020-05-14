@@ -48,7 +48,7 @@ read_hospitalized = pd.read_csv (r'C:\Users\abirrahman\Library\Mobile%20Document
 read_Hospitalized.to_sql('Hospitalized', conn, if_exists='append', index = False) 
 
 c.execute('''
-INSERT INTO Province_State (Province_State, Country_Region, Confirmed, Deaths, Recovered, Active, Tested, Hospitalized)
+INSERT INTO covid.db (Province_State, Country_Region, Confirmed, Deaths, Recovered, Active, Tested, Hospitalized)
 SELECT DISTINCT ctr.Province_State, ctr.Country_Region, clt.Confirmed, clt.Deaths, clt.Recovered, clt.Active, clt.Tested, clt.Hospitalized
           ''')
           
@@ -99,7 +99,7 @@ read_hospitalized = pd.read_csv (r'C:\Users\abirrahman\Library\Mobile%20Document
 read_Hospitalized.to_sql('Hospitalized', conn, if_exists='append', index = False) 
 
 c.execute('''
-INSERT INTO Province_State (Province_State, Country_Region, Confirmed, Deaths, Recovered, Active, Tested, Hospitalized)
+INSERT INTO covid.db (Province_State, Country_Region, Confirmed, Deaths, Recovered, Active, Tested, Hospitalized)
 SELECT DISTINCT ctr.Province_State, ctr.Country_Region, clt.Confirmed, clt.Deaths, clt.Recovered, clt.Active, clt.Tested, clt.Hospitalized
           ''')
           
@@ -117,4 +117,3 @@ print (df)
 df.to_sql('Province_State', conn, if_exists='append', index = False)
 
 export_csv = df.to_csv (r'C:\Users\abirrahman\Library\Mobile%20Documents\com~apple~Numbers\Documents\export_list.csv', index = None, header=True)
-
