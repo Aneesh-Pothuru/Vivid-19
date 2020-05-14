@@ -6,15 +6,9 @@ conn = sqlite3.connect('covid.db')
 c = conn.cursor() 
 
 c.execute('''CREATE TABLE STATE
-             ([generated_id] INTEGER PRIMARY KEY,[Province_State] text, [Country_Region] integer, [Last_Update] integer, [Lat] integer, [Long_] integer, [Confirmed] integer, [Deaths] integer, [Recovered] integer, [Active] integer, [People_Tested] integer, [People_Hospitalized] integer)
+             ([generated_id] INTEGER PRIMARY KEY,[Province_State] text, [Country_Region] integer, [Confirmed] integer, [Deaths] integer, [Recovered] integer, [Active] integer, [People_Tested] integer, [People_Hospitalized] integer)
 c.execute('''CREATE TABLE COUNTRY
-             ([generated_id] INTEGER PRIMARY KEY,[Country_Region] integer, [Last_Update] integer, [Lat] integer, [Long_] integer, [Confirmed] integer, [Deaths] integer, [Recovered] integer, [Active] integer, [People_Tested] integer, [People_Hospitalized] integer)      
-c.execute('''CREATE TABLE UPDATED
-             ([generated_id] INTEGER PRIMARY KEY,[Last_Update] integer, [Lat] integer, [Long_] integer, [Confirmed] integer, [Deaths] integer, [Recovered] integer, [Active] integer, [People_Tested] integer, [People_Hospitalized] integer)            
-c.execute('''CREATE TABLE LATITUDE
-             ([generated_id] INTEGER PRIMARY KEY,[Lat] integer, [Long_] integer, [Confirmed] integer, [Deaths] integer, [Recovered] integer, [Active] integer, [People_Tested] integer, [People_Hospitalized] integer)
-c.execute('''CREATE TABLE LONGITUDE
-             ([generated_id] INTEGER PRIMARY KEY,[Long_] integer, [Confirmed] integer, [Deaths] integer, [Recovered] integer, [Active] integer, [People_Tested] integer, [People_Hospitalized] integer)     
+             ([generated_id] INTEGER PRIMARY KEY,[Country_Region] integer,[Confirmed] integer, [Deaths] integer, [Recovered] integer, [Active] integer, [People_Tested] integer, [People_Hospitalized] integer)           
 c.execute('''CREATE TABLE CONFIRMED
              ([generated_id] INTEGER PRIMARY KEY,[Confirmed] integer, [Deaths] integer, [Recovered] integer, [Active] integer, [People_Tested] integer, [People_Hospitalized] integer)  
 c.execute('''CREATE TABLE DEATHS
@@ -29,6 +23,98 @@ c.execute('''CREATE TABLE HOSPITALIZED
              ([generated_id] INTEGER PRIMARY KEY,[People_Hospitalized] integer)
 conn.commit()
 
-read_state = pd.read_csv (r'C:/Users/abirrahman/Library/Mobile%20Documents/com~apple~Numbers/Documents/Province_State/05-09-2020.csv')
+read_state = pd.read_csv (r'C:\Users\abirrahman\Library\Mobile%20Documents\com~apple~Numbers\Documents\Province_State\Province_State_05-09-2020.csv')
 read_Province_State.to_sql('Province_State', conn, if_exists='append', index = False) 
+
+read_country = pd.read_csv (r'C:\Users\abirrahman\Library\Mobile%20Documents\com~apple~Numbers\Documents\Country_Region\Country_Region_05-09-2020.csv')
+read_Country_Region.to_sql('Country_Region', conn, if_exists='append', index = False) 
+
+read_confirmed = pd.read_csv (r'C:\Users\abirrahman\Library\Mobile%20Documents\com~apple~Numbers\Documents\Confirmed\Confirmed_05-09-2020.csv')
+read_Confirmed.to_sql('Confirmed', conn, if_exists='append', index = False) 
+
+read_deaths = pd.read_csv (r'C:\Users\abirrahma\Library\Mobile%20Documents\com~apple~Numbers\Documents\Deaths\Deaths_05-09-2020.csv')
+read_Deaths.to_sql('Deaths', conn, if_exists='append', index = False) 
+
+read_recovered = pd.read_csv (r'C:\Users\abirrahman\Library\Mobile%20Documents\com~apple~Numbers\Documents\Recovered/Recovered_05-09-2020.csv')
+read_Recovered.to_sql('Recovered', conn, if_exists='append', index = False) 
+
+read_active = pd.read_csv (r'C:\Users\abirrahman\Library\Mobile%20Documents\com~apple~Numbers\Documents\Active\Active_05-09-2020.csv')
+read_Active.to_sql('Active', conn, if_exists='append', index = False) 
+
+read_tests = pd.read_csv (r'C:\Users\abirrahman\Library\Mobile%20Documents\com~apple~Numbers\Documents\Tests\Tests_05-09-2020.csv')
+read_Tests.to_sql('Tests', conn, if_exists='append', index = False) 
+
+read_hospitalized = pd.read_csv (r'C:\Users\abirrahman\Library\Mobile%20Documents\com~apple~Numbers\Documents\Hospitalized\Hospitalized_05-09-2020.csv')
+read_Hospitalized.to_sql('Hospitalized', conn, if_exists='append', index = False) 
+
+c.execute('''
+INSERT INTO Province_State (Province_State, Country_Region, Confirmed, Deaths, Recovered, Active, Tested, Hospitalized)
+SELECT DISTINCT ctr.Province_State, ctr.Country_Region, clt.Confirmed, clt.Deaths, clt.Recovered, clt.Active, clt.Tested, clt.Hospitalized
+          ''')
+          
+c.execute('''
+SELECT DISTINCT *
+FROM Province_State
+WHERE Province_State = (SELECT Alabama THROUGH Wyoming)
+          ''')
+   
+#print(c.fetchall())
+
+df = DataFrame(c.fetchall(), columns=['Province_State','Country_Region','Confirmed','Deaths','Recovered','Active','Tested','Hospitalized'])
+print (df)
+
+df.to_sql('Province_State', conn, if_exists='append', index = False)
+
+export_csv = df.to_csv (r'C:\Users\abirrahman\Library\Mobile%20Documents\com~apple~Numbers\Documents\export_list.csv', index = None, header=True)
+
+import sqlite3
+import pandas as pd
+from pandas import DataFrame
+
+conn = sqlite3.connect('covid.db')
+c = conn.cursor()
+
+read_state = pd.read_csv (r'C:\Users\abirrahman\Library\Mobile%20Documents\com~apple~Numbers\Documents\Province_State\Province_State_05-10-2020.csv')
+read_Province_State.to_sql('Province_State', conn, if_exists='append', index = False) 
+
+read_country = pd.read_csv (r'C:\Users\abirrahman\Library\Mobile%20Documents\com~apple~Numbers\Documents\Country_Region\Country_Region_05-10-2020.csv')
+read_Country_Region.to_sql('Country_Region', conn, if_exists='append', index = False) 
+
+read_confirmed = pd.read_csv (r'C:\Users\abirrahman\Library\Mobile%20Documents\com~apple~Numbers\Documents\Confirmed\Confirmed_05-10-2020.csv')
+read_Confirmed.to_sql('Confirmed', conn, if_exists='append', index = False) 
+
+read_deaths = pd.read_csv (r'C:\Users\abirrahma\Library\Mobile%20Documents\com~apple~Numbers\Documents\Deaths\Deaths_05-10-2020.csv')
+read_Deaths.to_sql('Deaths', conn, if_exists='append', index = False) 
+
+read_recovered = pd.read_csv (r'C:\Users\abirrahman\Library\Mobile%20Documents\com~apple~Numbers\Documents\Recovered/Recovered_05-10-2020.csv')
+read_Recovered.to_sql('Recovered', conn, if_exists='append', index = False) 
+
+read_active = pd.read_csv (r'C:\Users\abirrahman\Library\Mobile%20Documents\com~apple~Numbers\Documents\Active\Active_05-10-2020.csv')
+read_Active.to_sql('Active', conn, if_exists='append', index = False) 
+
+read_tests = pd.read_csv (r'C:\Users\abirrahman\Library\Mobile%20Documents\com~apple~Numbers\Documents\Tests\Tests_05-10-2020.csv')
+read_Tests.to_sql('Tests', conn, if_exists='append', index = False) 
+
+read_hospitalized = pd.read_csv (r'C:\Users\abirrahman\Library\Mobile%20Documents\com~apple~Numbers\Documents\Hospitalized\Hospitalized_05-10-2020.csv')
+read_Hospitalized.to_sql('Hospitalized', conn, if_exists='append', index = False) 
+
+c.execute('''
+INSERT INTO Province_State (Province_State, Country_Region, Confirmed, Deaths, Recovered, Active, Tested, Hospitalized)
+SELECT DISTINCT ctr.Province_State, ctr.Country_Region, clt.Confirmed, clt.Deaths, clt.Recovered, clt.Active, clt.Tested, clt.Hospitalized
+          ''')
+          
+c.execute('''
+SELECT DISTINCT *
+FROM Province_State
+WHERE Province_State = (SELECT Alabama THROUGH Wyoming)
+          ''')
+   
+#print(c.fetchall())
+
+df = DataFrame(c.fetchall(), columns=['Province_State','Country_Region','Confirmed','Deaths','Recovered','Active','Tested','Hospitalized'])
+print (df)
+
+df.to_sql('Province_State', conn, if_exists='append', index = False)
+
+export_csv = df.to_csv (r'C:\Users\abirrahman\Library\Mobile%20Documents\com~apple~Numbers\Documents\export_list.csv', index = None, header=True)
 
