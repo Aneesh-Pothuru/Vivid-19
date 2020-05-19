@@ -25,7 +25,7 @@ state.append(state.text)
 active_cases.append(active_cases.text)
 confirmed_cases.append(confirmed_cases.text)
 confirmed_deaths.append(confirmed_deaths.text)
-tests.appen(tests.text)
+tests.append(tests.text)
 
 python coronavirus.py
 
