@@ -1,0 +1,19 @@
+Install Heroku CLI 
+
+$ heroku login
+
+$ cd my-project/
+$ git init
+$ heroku git:remote -a vivid-io
+
+
+deploy app
+$ ls
+my-application		requirements.txt	runtime.txt
+
+$ git push heroku master
+
+$ heroku buildpacks:set heroku/python
+
+make test
+
